@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
-
+import TopBar from './components/TopBar';
+import Navbar from './components/Navbar';
+import TopNewsSlider from './components/TopNewsSlider';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Single from './components/navbarComponent/Single';
+import Contact from './components/navbarComponent/Contact';
+import Category from './components/navbarComponent/Category';
+import MainNewsSlider from './components/MainNewsSlider';
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<Router>
+			<div className="App">
+				<TopBar />
+				<Navbar />
+				<TopNewsSlider />
+				<MainNewsSlider />
+				{/* routes */}
+				<Switch>
+					<Route exact path="/category">
+						<Category />
+					</Route>
+					<Route path="/contact">
+						<Contact />
+					</Route>
+					<Route path="/single">
+						<Single />
+					</Route>
+				</Switch>
+			</div>
+		</Router>
+	);
 }
 
 export default App;
